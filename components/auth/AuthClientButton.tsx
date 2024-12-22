@@ -9,7 +9,9 @@ const AuthClientButton =  ({ session }: {session: Session | null}) => {
     const supabase = createClientComponentClient();
 
     const handleSiginIn = async () =>{
-      console.log('login')      
+      console.log('login')
+      console.log(location.origin)
+            
         await supabase.auth.signInWithOAuth({
             provider: "github",
             options:{

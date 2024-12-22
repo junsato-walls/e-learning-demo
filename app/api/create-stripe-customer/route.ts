@@ -33,4 +33,3 @@ export async function POST(req: NextRequest) {
         message: `stripe customer created ${customer.id}`
     })
 }
-// 
