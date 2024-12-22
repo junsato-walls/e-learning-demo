@@ -28,8 +28,6 @@ const LessonDetailPage = async ({ params }: { params: { id: number } }) => {
     const lesson = await getDetailLesson(params.id, supabase);
     const video = await getpremiumContent(params.id, supabase);
     const videoid = extractYouTubeVideoId(video?.video_url as string) as string;
-    // console.log(video)
-    // console.log(lesson?.created_at)
     return (
         <div className="w-full max-w-3xl mx-auto py-16 px-8">
             <h1 className="text-3xl mb-6">{lesson?.title}</h1>
