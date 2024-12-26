@@ -7,7 +7,7 @@ import { Database } from '@/lib/database.types';
 export async function POST(req: NextRequest){
     const supabase = createRouteHandlerClient<Database>({ cookies });
     const stripe = new initStripe(process.env.STRIPE_SECRET_KEY!);
-    const signature = req.headers.get("stripe_signature");
+    const signature = req.headers.get("stripe-signature");
     const endpointSecret = process.env.STRIPE_SIGNING_SECRET
     const reqBuffer = Buffer.from(await req.arrayBuffer())
     let event;
@@ -27,12 +27,7 @@ export async function POST(req: NextRequest){
             
             
             case "customer.subscription.updated":
-                // const customerSubscriptionCreated = event.data.object;
-                // await supabase.from("profile").update({
-                //     is_subscribed: true,
-                //     interval: customerSubscriptionCreated.items.data[0].plan.interval,
-                // })
-                // .eq("stripe_customer", event.data.object.customer);                
+                      
 
         }
     }catch(err: unknown){
