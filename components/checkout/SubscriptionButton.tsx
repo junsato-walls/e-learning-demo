@@ -1,5 +1,4 @@
 "use client"
-import { createClientComponentClient } from '@supabase/auth-helpers-nextjs'
 import React from 'react'
 import { Button } from '../ui/button'
 import { loadStripe } from '@stripe/stripe-js'
