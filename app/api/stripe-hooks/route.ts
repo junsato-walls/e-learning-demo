@@ -1,4 +1,3 @@
-import { Interval } from './../../../node_modules/@stripe/stripe-js/dist/api/sources.d';
 import initStripe from 'stripe';
 import { NextRequest, NextResponse } from "next/server";
 import { createRouteHandlerClient } from '@supabase/auth-helpers-nextjs';
