@@ -1,7 +1,7 @@
-import { NextResponse } from "next/server";
+import { NextRequest, NextResponse } from "next/server";
 
-export async function POST(req: NextResponse){
+export async function POST(req: NextRequest){
     console.log("webhook dispatch")
     console.log(req)
-    return NextResponse.json({received: true})
+    return NextResponse.json({received: true});
 }
