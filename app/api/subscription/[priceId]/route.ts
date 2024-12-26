@@ -29,9 +29,11 @@ export async function GET(
             mode: "subscription",
             payment_method_types: ["card"],
             line_items:[{price:priceId,quantity:1}],
-            success_url: "http://localhost:3000/payment/success",
-            cancel_url: "http://localhost:3000/payment/cancelled"
+            success_url: `${location.origin}/api/subscription/payment/success`,
+            cancel_url: `${location.origin}/api/subscription/payment/cancelled`
         });
+        // success_url: "http://localhost:3000/payment/success",
+        // cancel_url: "http://localhost:3000/payment/cancelled"
 
         console.log("リクエストパラメータ:" + params.priceId)
         console.log("カスタマーID取得:" + stripe_customer_data?.stripe_customer)

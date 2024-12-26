@@ -7,7 +7,8 @@ const SubscriptionButton =  ({ planId }: {planId: string}) => {
     // const supabase = createClientComponentClient();
     const processSubscription = async () =>{
         const res = await fetch(
-            `http://localhost:3000/api/subscription/${planId}`
+            // `http://localhost:3000/api/subscription/${planId}`
+            `${location.origin}/api/subscription/${planId}`
         );        
         const data = await res.json();
         const stripe = await loadStripe(process.env.NEXT_PUBLIC_STRIPE_KEY!);

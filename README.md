@@ -13,6 +13,17 @@ pnpm dev
 # or
 bun dev
 ```
+実行環境メモ
+ローカル環境
+http://localhost:3000/
+vercel環境
+https://e-learning-demo-98m7cff1p-jun-satos-projects-bc5fbf7c.vercel.app/
+
+supabase:Authentication → URL Confiruration → Site URL
+stripe:開発者
+nextjs: app → api → subscription → [priceid] → route.ts 
+        components → checkout → SubscriptionButton.tsx
+        components → auth → AuthClientButton.tsx
 
 tsxファイル作成コマンドメモ
 rafce
