@@ -1,4 +1,3 @@
-import initStripe from 'stripe';
 import { createRouteHandlerClient } from "@supabase/auth-helpers-nextjs";
 import { NextRequest, NextResponse } from "next/server";
 import { cookies } from "next/headers"
@@ -20,6 +19,8 @@ export async function GET(
         .select("stripe_customer")
         .eq("id", user?.id)
         .single();
+        console.log(params)
+        console.log(stripe_customer_data)
         
 
          const host = req.headers.get('host') || 'localhost';

@@ -1,7 +1,7 @@
 "use client"
 import React from 'react'
 import { Button } from '../ui/button'
-import { loadStripe } from '@stripe/stripe-js'
+// import { loadStripe } from '@stripe/stripe-js'
 
 const SubscriptionButton =  ({ planId }: {planId: string}) => {
     // const supabase = createClientComponentClient();
