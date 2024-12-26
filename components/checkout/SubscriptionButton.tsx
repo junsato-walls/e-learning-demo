@@ -5,6 +5,8 @@ import { loadStripe } from '@stripe/stripe-js'
 
 const SubscriptionButton =  ({ planId }: {planId: string}) => {
     // const supabase = createClientComponentClient();
+    console.log("SubscriptionButton押下：")
+    console.log(`${location.origin}/api/subscription/${planId}`)
     const processSubscription = async () =>{
         const res = await fetch(
             // `http://localhost:3000/api/subscription/${planId}`
