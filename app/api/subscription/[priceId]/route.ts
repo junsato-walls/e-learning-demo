@@ -34,8 +34,8 @@ export async function GET(
             mode: "subscription",
             payment_method_types: ["card"],
             line_items:[{price:priceId,quantity:1}],
-            success_url: `${origin}/api/payment/success`,
-            cancel_url: `${origin}/api/payment/cancelled`
+            success_url: `${origin}/payment/success`,
+            cancel_url: `${origin}/payment/cancelled`
         });
 
 
