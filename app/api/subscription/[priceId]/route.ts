@@ -20,12 +20,11 @@ export async function GET(
         .eq("id", user?.id)
         .single();
         console.log(params)
-        console.log(stripe_customer_data)
-        
+        console.log(stripe_customer_data)        
+        const host = req.headers.get('host') || 'localhost';
+        const protocol = req.headers.get('x-forwarded-proto') || 'http';
+        const origin = `${protocol}://${host}`;
 
-         const host = req.headers.get('host') || 'localhost';
-
-
-        return NextResponse.json({id:host});
+        return NextResponse.json({id:origin});
 }
 
