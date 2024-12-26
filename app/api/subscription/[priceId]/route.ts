@@ -30,7 +30,7 @@ export async function GET(
             payment_method_types: ["card"],
             line_items:[{price:priceId,quantity:1}],
             success_url: "http://localhost:3000/payment/success",
-            cancel_url: "http://localhost:3000/payment/success"
+            cancel_url: "http://localhost:3000/payment/cancelled"
         });
 
         console.log("リクエストパラメータ:" + params.priceId)
