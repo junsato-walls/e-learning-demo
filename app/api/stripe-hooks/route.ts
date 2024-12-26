@@ -35,8 +35,10 @@ export async function POST(req: NextRequest){
                 // .eq("stripe_customer", event.data.object.customer);                
 
         }
-    }catch(err:any){
-        return NextResponse.json(`Webhook Error: ${err.message}`, { status:401 })
+    }catch(err: unknown){
+        if (err instanceof Error) {
+            return NextResponse.json(`Webhook Error: ${err.message}`, { status:401 })
+        }
     }
 
     return NextResponse.json({received: true});
