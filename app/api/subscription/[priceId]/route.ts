@@ -28,6 +28,9 @@ export async function GET(
         const priceId = params.priceId;
         const stripe = new initStripe(process.env.STRIPE_SECRET_KEY!);
 
+        if(!stripe_customer_data?.stripe_customer){
+            return NextResponse.json("Error creating Stripe session", { status: 500 });
+        }
          const session = await stripe.checkout.sessions.create({
             customer:stripe_customer_data?.stripe_customer!,
             mode: "subscription",
