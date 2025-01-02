@@ -23,7 +23,7 @@ export async function GET(req:NextRequest){
         const origin = `${protocol}://${host}`;
 
         const session = await stripe.billingPortal.sessions.create({
-            customer: stripe_customer_data?.stripe_customer,
+            customer: stripe_customer_data?.stripe_customer!,
             return_url:  `${origin}/dashboard`
         })
 
