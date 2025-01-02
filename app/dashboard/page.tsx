@@ -1,6 +1,6 @@
 import React from 'react'
 import { Database } from "@/lib/database.types";
-import { createServerComponentClient, SupabaseClient } from '@supabase/auth-helpers-nextjs';
+import { SupabaseClient } from '@supabase/auth-helpers-nextjs';
 import SubscriptionManagementButton from '@/components/checkout/SubscriptionManagementButton';
 import { supabaseServer } from '@/utils/supabaseServer';
 

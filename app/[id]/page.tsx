@@ -1,5 +1,5 @@
 
-import { createServerComponentClient, SupabaseClient } from "@supabase/auth-helpers-nextjs";
+import { SupabaseClient } from "@supabase/auth-helpers-nextjs";
 import React from "react";
 import { Database } from "@/lib/database.types";
 import { YouTubeEmbed } from "@next/third-parties/google"
