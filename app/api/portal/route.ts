@@ -22,11 +22,14 @@ export async function GET(req:NextRequest){
         const protocol = req.headers.get('x-forwarded-proto') || 'http';
         const origin = `${protocol}://${host}`;
 
+        if (!stripe_customer_data?.stripe_customer){
+            console.log("Error creating Stripe session:");
+            return NextResponse.json("Error creating Stripe session", { status: 500 });
+        }
         const session = await stripe.billingPortal.sessions.create({
-            customer: stripe_customer_data?.stripe_customer!,
+            customer: stripe_customer_data.stripe_customer,
             return_url:  `${origin}/dashboard`,
         })
-
 
         return NextResponse.json({url: session.url});
 }
