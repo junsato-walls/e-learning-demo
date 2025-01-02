@@ -29,7 +29,7 @@ export async function GET(
         const stripe = new initStripe(process.env.STRIPE_SECRET_KEY!);
 
          const session = await stripe.checkout.sessions.create({
-            customer:stripe_customer_data?.stripe_customer,
+            customer:stripe_customer_data?.stripe_customer!,
             mode: "subscription",
             payment_method_types: ["card"],
             line_items:[{price:priceId,quantity:1}],
