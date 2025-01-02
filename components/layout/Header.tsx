@@ -3,8 +3,7 @@ import React from 'react'
 import { Button } from '../ui/button'
 import AuthServerButton from '@/components/auth/AuthServerButton'
 import { cookies } from "next/headers";
-import { Database } from "@/lib/database.types";
-import { createServerComponentClient, SupabaseClient } from '@supabase/auth-helpers-nextjs';
+import { createServerComponentClient } from '@supabase/auth-helpers-nextjs';
 
 
 export const Header = async() => {

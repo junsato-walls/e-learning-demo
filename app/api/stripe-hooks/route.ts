@@ -45,7 +45,6 @@ export async function POST(req: NextRequest){
                 }                                
             case "customer.subscription.deleted":
                 console.log("deleted")
-                const customerSubscriptionDeleted = event.data.object;
                 await supabase.from("profile").update({
                     is_subscribed: false,
                     interval: null,
