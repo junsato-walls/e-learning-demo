@@ -1,13 +1,12 @@
 import initStripe from 'stripe';
-import { createRouteHandlerClient } from "@supabase/auth-helpers-nextjs";
 import { NextRequest, NextResponse } from "next/server";
-import { cookies } from "next/headers"
+import { supabaseRouteHandlerClient } from '@/utils/supabaseRouteHandlerClient';
 
 export async function GET(
     req:NextRequest, 
     { params } : { params: { priceId: string } }
     ){
-        const supabase = createRouteHandlerClient({cookies})
+        const supabase = supabaseRouteHandlerClient(); 
         const { data } = await supabase.auth.getUser();
         const user = data.user;
 

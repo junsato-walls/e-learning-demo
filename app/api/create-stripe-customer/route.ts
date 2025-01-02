@@ -1,10 +1,10 @@
 import { createRouteHandlerClient } from "@supabase/auth-helpers-nextjs";
 import { NextRequest, NextResponse } from "next/server";
 import initStripe from "stripe"
-import { cookies } from "next/headers"
+import { supabaseRouteHandlerClient } from "@/utils/supabaseRouteHandlerClient";
 
 export async function POST(req: NextRequest) {
-    const supabase = createRouteHandlerClient({cookies})
+    const supabase = supabaseRouteHandlerClient();
     const query = req.nextUrl.searchParams.get("API_ROUTE_SECRET")
 
     if (query !== process.env.API_ROUTE_SECRET){
