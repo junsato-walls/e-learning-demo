@@ -1,9 +1,8 @@
 import Link from 'next/link'
-import React from 'react'
 import { Button } from '../ui/button'
 import AuthServerButton from '@/components/auth/AuthServerButton'
 import { supabaseServer } from '@/utils/supabaseServer';
-
+import { LoginButton } from './UserSetting'
 
 export const Header = async() => {
   const supabase = supabaseServer();
@@ -24,6 +23,10 @@ export const Header = async() => {
         </Link>
         <div className="ml-auto">
             <AuthServerButton />
+        </div>
+
+        <div>
+        <LoginButton />
         </div>
     </div>
   )
