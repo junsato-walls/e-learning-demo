@@ -1,6 +1,6 @@
 import Link from 'next/link'
 import { Button } from '../ui/button'
-import AuthServerButton from '@/components/auth/AuthServerButton'
+// import AuthServerButton from '@/components/auth/AuthServerButton'
 import { supabaseServer } from '@/utils/supabaseServer';
 import { LoginButton } from './UserSetting'
 
@@ -21,12 +21,12 @@ export const Header = async() => {
         <Link href={"/pricing"} className="ml-4">
             <Button variant={"outline"}>価格</Button>
         </Link>
-        <div className="ml-auto">
+        {/* <div className="ml-auto">
             <AuthServerButton />
-        </div>
+        </div> */}
 
-        <div>
-        <LoginButton />
+        <div className="ml-auto">
+          <LoginButton />
         </div>
     </div>
   )

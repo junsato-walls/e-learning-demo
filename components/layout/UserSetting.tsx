@@ -113,10 +113,10 @@ export const LoginButton = () => {
                     <UserButton.UserProfilePage label="account" />
                     <UserButton.UserProfilePage label="security" />
                 </UserButton>
-            </SignedIn>          
-            <SignedOut>
-              <Link href={"/sign-in"} className="w-20 inline-block">ログイン</Link>
-            </SignedOut>
+            </SignedIn>            
+                <SignedOut>
+                    <Button><Link href={"/sign-in"} className="w-20 inline-block">ログイン</Link></Button>
+                </SignedOut>            
         </div>
     );
 }
