@@ -1,7 +1,7 @@
 import { Webhook } from 'svix'
 import { headers } from 'next/headers'
 import { WebhookEvent } from '@clerk/nextjs/server'
-// import { supabaseRouteHandlerClient } from '@/utils/supabaseRouteHandlerClient'
+import { supabaseRouteHandlerClient } from '@/utils/supabaseRouteHandlerClient'
 
 export async function POST(req: Request) {
   const SIGNING_SECRET = process.env.SIGNING_SECRET
@@ -48,46 +48,38 @@ export async function POST(req: Request) {
 
   // Do something with payload
   // For this guide, log payload to console
-  const { id } = evt.data
-  const eventType = evt.type
-  const userData = evt.data
-  console.log(`Received webhook with ID ${id} and event type of ${eventType}`)
-  console.log('Webhook payload:', body)
-  console.log('Webhook id:', userData)
+//   const { id } = evt.data
+//   const eventType = evt.type
+//   const userData = evt.data
+// //   console.log(`Received webhook with ID ${id} and event type of ${eventType}`)
+//   console.log('Webhook payload:', body)
+//   console.log('Webhook id:', userData)
   
-
+  // add supabase users table  
   if (evt.type === 'user.created') {
     console.log('userId:', evt.data.id)
     console.log('email:', evt.data.email_addresses[0].email_address)
     console.log('username:', evt.data.username)
+
+    // Upsert the user data into Supabase
+    const supabase = supabaseRouteHandlerClient()
+    const { data, error } = await supabase
+      .from('users')
+      .upsert(
+        {
+          id: evt.data.id, 
+          email: evt.data.email_addresses[0].email_address,
+          username: evt.data.username,
+        }
+      )
+
+    if (error) {
+      console.error("Error inserting user into Supabase:", error)
+      return new Response('Error inserting user into Supabase', { status: 500 })
+    } else {
+      console.log("User added to Supabase:", data)
+    }
   }
-
-
-
-
-//   if (eventType === 'user.created') {
-//     const userData = evt.data
-
-//     // Upsert the user data into Supabase
-//     const supabase = supabaseRouteHandlerClient()
-//     const { data, error } = await supabase
-//       .from('users')
-//       .upsert(
-//         {
-//           id: userData.id, // User ID
-//           email: userData.email_addresses[0]?.email_address, // User email
-//           username: userData.username, // User username
-//         }
-//       )
-
-//     if (error) {
-//       console.error("Error inserting user into Supabase:", error)
-//       return new Response('Error inserting user into Supabase', { status: 500 })
-//     } else {
-//       console.log("User added to Supabase:", data)
-//     }
-//   }
-
 
   return new Response('Webhook received', { status: 200 })
 }
