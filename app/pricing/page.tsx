@@ -39,6 +39,7 @@ const getAllPlans = async (): Promise<Plan[]> =>{
     return sortedPlans
 }
 const PricingPage = async () => {
+    console.log("pricingPage起動")
     const supabase = supabaseServer();
     const {data: user} = await supabase.auth.getSession()
     const [plans, profile] = await Promise.all([
