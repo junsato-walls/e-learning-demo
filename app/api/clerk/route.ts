@@ -4,7 +4,6 @@ import { WebhookEvent } from '@clerk/nextjs/server'
 // import { supabaseRouteHandlerClient } from '@/utils/supabaseRouteHandlerClient'
 
 export async function POST(req: Request) {
-    console.log("clerkのWebhook実行テスト")
   const SIGNING_SECRET = process.env.SIGNING_SECRET
 
   if (!SIGNING_SECRET) {
@@ -54,9 +53,15 @@ export async function POST(req: Request) {
   const userData = evt.data
   console.log(`Received webhook with ID ${id} and event type of ${eventType}`)
   console.log('Webhook payload:', body)
-  console.log('Webhook payload:', userData)
-  console.log('Webhook payload:', userData.id)
+  console.log('Webhook id:', userData)
   
+
+  if (evt.type === 'user.created') {
+    console.log('userId:', evt.data.id)
+    console.log('Webhook payload:', evt.data.email_addresses)
+    console.log('Webhook payload:', evt.data.username)
+  }
+
 
 
 
@@ -86,3 +91,6 @@ export async function POST(req: Request) {
 
   return new Response('Webhook received', { status: 200 })
 }
+
+
+
