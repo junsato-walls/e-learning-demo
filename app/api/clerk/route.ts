@@ -58,8 +58,8 @@ export async function POST(req: Request) {
 
   if (evt.type === 'user.created') {
     console.log('userId:', evt.data.id)
-    console.log('Webhook payload:', evt.data.email_addresses)
-    console.log('Webhook payload:', evt.data.username)
+    console.log('email:', evt.data.email_addresses[0].email_address)
+    console.log('username:', evt.data.username)
   }
 
 
